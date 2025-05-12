@@ -23,13 +23,16 @@ export default function Header() {
   const pathname = usePathname();
   const router = useRouter();
   const [userEmail, setUserEmail] = useState<string | null>(null);
+  const [userIsAdmin, setUserIsAdmin] = useState<boolean>(false);
   useEffect(() => {
     if (typeof window !== 'undefined') {
       setLogged(!!localStorage.getItem("token"));
       setUserEmail(localStorage.getItem("user_email"));
+      setUserIsAdmin(localStorage.getItem("user_is_admin") === 'true');
       const handler = () => {
         setLogged(!!localStorage.getItem("token"));
         setUserEmail(localStorage.getItem("user_email"));
+        setUserIsAdmin(localStorage.getItem("user_is_admin") === 'true');
       };
       window.addEventListener("storage", handler);
       return () => window.removeEventListener("storage", handler);
@@ -61,6 +64,7 @@ export default function Header() {
       if (!res.ok) throw new Error(data.error || 'Ошибка входа');
       localStorage.setItem('token', data.token);
       localStorage.setItem('user_email', data.user.email);
+      localStorage.setItem('user_is_admin', data.user.is_admin ? 'true' : 'false');
       setLogged(true);
       setDrawerOpen(false);
       setError(null);
@@ -135,7 +139,7 @@ export default function Header() {
             <Link href="/cabinet" className={styles.drawerLink}>Личный кабинет</Link>
             <Link href="/ai" className={styles.drawerLink}>AI-подбор</Link>
             <Link href="/reviews" className={styles.drawerLink}>Отзывы</Link>
-            {userEmail === 'hulligan_200519_6657@mail.ru' && (
+            {userIsAdmin && (
               <Link href="/admin" className={styles.drawerLink}>Админка</Link>
             )}
             <button onClick={handleLogout} className={styles.drawerButton} style={{marginTop:32}}>Выйти</button>

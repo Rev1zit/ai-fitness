@@ -42,6 +42,8 @@ export default function Header() {
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user_email");
+    localStorage.removeItem("user_is_admin");
+    setUserIsAdmin(false);
     setLogged(false);
     setDrawerOpen(false);
     router.push("/");
@@ -65,6 +67,7 @@ export default function Header() {
       localStorage.setItem('token', data.token);
       localStorage.setItem('user_email', data.user.email);
       localStorage.setItem('user_is_admin', data.user.is_admin ? 'true' : 'false');
+      setUserIsAdmin(data.user.is_admin ? true : false);
       setLogged(true);
       setDrawerOpen(false);
       setError(null);

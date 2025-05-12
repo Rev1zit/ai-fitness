@@ -15,7 +15,7 @@ export default function CabinetPage() {
       router.replace("/login");
       return;
     }
-    fetch("http://localhost:3001/api/ai/history", {
+    fetch(process.env.NEXT_PUBLIC_API_URL + "/api/ai/history", {
       headers: { "Authorization": `Bearer ${token}` }
     })
       .then(async res => {

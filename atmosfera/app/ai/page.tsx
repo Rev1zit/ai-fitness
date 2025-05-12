@@ -35,7 +35,7 @@ export default function AiPodborPage() {
     setLoading(true);
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:3001/api/ai/complex", {
+      const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/api/ai/complex", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

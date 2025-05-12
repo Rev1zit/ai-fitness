@@ -24,7 +24,7 @@ export default function AdminPage() {
       return;
     }
     setLoading(true);
-    fetch("http://localhost:3001/api/admin/users", {
+    fetch(process.env.NEXT_PUBLIC_API_URL + "/api/admin/users", {
       headers: { "Authorization": `Bearer ${token}` }
     })
       .then(async res => {
@@ -47,7 +47,7 @@ export default function AdminPage() {
     setModalLoading(true);
     setModalError("");
     const token = localStorage.getItem("token");
-    fetch(`http://localhost:3001/api/admin/user/${user.id}/history`, {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/admin/user/${user.id}/history`, {
       headers: { "Authorization": `Bearer ${token}` }
     })
       .then(async res => {
@@ -65,7 +65,7 @@ export default function AdminPage() {
   const deleteUser = (user: any) => {
     if (!window.confirm(`Удалить пользователя ${user.email}?`)) return;
     const token = localStorage.getItem("token");
-    fetch(`http://localhost:3001/api/admin/user/${user.id}/delete`, {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/admin/user/${user.id}/delete`, {
       method: "DELETE",
       headers: { "Authorization": `Bearer ${token}` }
     })
@@ -83,7 +83,7 @@ export default function AdminPage() {
   const deleteComplex = (complexId: number) => {
     if (!window.confirm("Удалить этот комплекс?")) return;
     const token = localStorage.getItem("token");
-    fetch(`http://localhost:3001/api/admin/complex/${complexId}/delete`, {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/admin/complex/${complexId}/delete`, {
       method: "DELETE",
       headers: { "Authorization": `Bearer ${token}` }
     })

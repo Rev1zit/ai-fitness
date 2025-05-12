@@ -20,7 +20,7 @@ export default function ReviewsPage() {
   async function fetchReviews() {
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:3001/api/reviews");
+      const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/api/reviews");
       const data = await res.json();
       setReviews(data.reviews || []);
     } catch {
@@ -35,7 +35,7 @@ export default function ReviewsPage() {
     setSubmitting(true); setError(null);
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:3001/api/reviews", {
+      const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/api/reviews", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

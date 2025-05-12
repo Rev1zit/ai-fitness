@@ -142,7 +142,6 @@ export default function Header() {
             <Link href="/cabinet" className={styles.drawerLink}>Личный кабинет</Link>
             <Link href="/ai" className={styles.drawerLink}>AI-подбор</Link>
             <Link href="/reviews" className={styles.drawerLink}>Отзывы</Link>
-            <div style={{color: 'red', fontWeight: 700}}>userIsAdmin: {String(userIsAdmin)}</div>
             {userIsAdmin && (
               <Link href="/admin" className={styles.drawerLink}>Админка</Link>
             )}

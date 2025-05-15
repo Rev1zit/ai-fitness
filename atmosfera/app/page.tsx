@@ -2,7 +2,7 @@
 import Image from "next/image";
 import styles from "./index.module.css";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, RefObject } from "react";
 
 const bannerImages = [
   "/images/banner1.jpg",
@@ -42,6 +42,7 @@ export default function Home() {
   const [showScroll, setShowScroll] = useState(false);
   const [bannerIdx, setBannerIdx] = useState(0);
   const [bannerFade, setBannerFade] = useState(true);
+  const sectionRefs: RefObject<HTMLElement | null>[] = [useRef<HTMLElement | null>(null), useRef<HTMLElement | null>(null), useRef<HTMLElement | null>(null), useRef<HTMLElement | null>(null), useRef<HTMLElement | null>(null)];
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -54,6 +55,43 @@ export default function Home() {
     }, 5000);
     return () => clearInterval(timer);
   }, [bannerIdx]);
+
+  useEffect(() => {
+    let ticking = false;
+    const handleWheel = (e: WheelEvent) => {
+      if (ticking) return;
+      ticking = true;
+      setTimeout(() => {
+        const sections = sectionRefs.map(ref => ref.current).filter(Boolean) as HTMLElement[];
+        const scrollPos = window.scrollY;
+        const direction = e.deltaY > 0 ? 1 : -1;
+        let nextSection: HTMLElement | null = null;
+        if (direction > 0) {
+          // scroll down
+          for (let sec of sections) {
+            if (sec && sec.offsetTop > scrollPos + 10) {
+              nextSection = sec;
+              break;
+            }
+          }
+        } else {
+          // scroll up
+          for (let i = sections.length - 1; i >= 0; i--) {
+            if (sections[i] && sections[i].offsetTop < scrollPos - 10) {
+              nextSection = sections[i];
+              break;
+            }
+          }
+        }
+        if (nextSection) {
+          nextSection.scrollIntoView({ behavior: "smooth" });
+        }
+        ticking = false;
+      }, 80);
+    };
+    window.addEventListener("wheel", handleWheel, { passive: false });
+    return () => window.removeEventListener("wheel", handleWheel);
+  }, []);
 
   function handlePrev() {
     setBannerFade(false);
@@ -73,7 +111,7 @@ export default function Home() {
   return (
     <main className={styles.main}>
       {/* Banner Slider */}
-      <section className={styles.bannerSlider} style={{marginTop: 40, display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', position: 'relative'}}>
+      <section ref={sectionRefs[0]} className={styles.bannerSlider} style={{marginTop: 40, display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', position: 'relative'}}>
         <button
           onClick={handlePrev}
           className={styles.bannerArrow}
@@ -106,7 +144,7 @@ export default function Home() {
       </section>
 
       {/* Наши направления */}
-      <section className={styles.sectionBlock}>
+      <section ref={sectionRefs[1]} className={styles.sectionBlock}>
         <h2 className={styles.sectionTitlePro}>Наши направления</h2>
         <div className={styles.directionsGrid}>
           {directions.map((d) => (
@@ -119,7 +157,7 @@ export default function Home() {
       </section>
 
       {/* Почему выбирают нас */}
-      <section className={styles.sectionBlock}>
+      <section ref={sectionRefs[2]} className={styles.sectionBlock}>
         <h2 className={styles.sectionTitlePro}>Почему выбирают нас?</h2>
         <div className={styles.cardGrid}>
           <div className={styles.cardPro}><div className={styles.cardIcon}>👩‍🎤</div>Только для девушек — уют и поддержка</div>
@@ -130,7 +168,7 @@ export default function Home() {
       </section>
 
       {/* Как это работает */}
-      <section className={styles.sectionBlock}>
+      <section ref={sectionRefs[3]} className={styles.sectionBlock}>
         <h2 className={styles.sectionTitlePro}>Как это работает?</h2>
         <div className={styles.cardGrid}>
           <div className={styles.cardPro}><div className={styles.cardIcon}>📝</div>1. Зарегистрируйтесь на сайте</div>
@@ -140,7 +178,7 @@ export default function Home() {
       </section>
 
       {/* Частые вопросы */}
-      <section className={styles.sectionBlock}>
+      <section ref={sectionRefs[4]} className={styles.sectionBlock}>
         <h2 className={styles.sectionTitlePro}>Частые вопросы</h2>
         <div className={styles.faqList}>
           {faq.map((item, i) => (

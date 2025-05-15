@@ -72,6 +72,15 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
+      {/* Как это работает */}
+      <section className={styles.sectionBlock}>
+        <h2 className={styles.sectionTitlePro}>Как это работает?</h2>
+        <div className={styles.cardGrid}>
+          <div className={styles.cardPro}><div className={styles.cardIcon}>📝</div>1. Зарегистрируйтесь на сайте</div>
+          <div className={styles.cardPro}><div className={styles.cardIcon}>🤖</div>2. Пройдите AI-анкету</div>
+          <div className={styles.cardPro}><div className={styles.cardIcon}>💃</div>3. Получите персональный план и занимайтесь с удовольствием!</div>
+        </div>
+      </section>
       {/* Banner Slider */}
       <section className={styles.bannerSlider} style={{marginTop: 40, display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', position: 'relative'}}>
         <button
@@ -113,16 +122,6 @@ export default function Home() {
           <div className={styles.cardPro}><div className={styles.cardIcon}>🤖</div>AI-подбор программ под ваши цели</div>
           <div className={styles.cardPro}><div className={styles.cardIcon}>💪</div>Профессиональные тренеры</div>
           <div className={styles.cardPro}><div className={styles.cardIcon}>🕒</div>Удобное расписание и гибкие абонементы</div>
-        </div>
-      </section>
-
-      {/* Как это работает */}
-      <section className={styles.sectionBlock}>
-        <h2 className={styles.sectionTitlePro}>Как это работает?</h2>
-        <div className={styles.cardGrid}>
-          <div className={styles.cardPro}><div className={styles.cardIcon}>📝</div>1. Зарегистрируйтесь на сайте</div>
-          <div className={styles.cardPro}><div className={styles.cardIcon}>🤖</div>2. Пройдите AI-анкету</div>
-          <div className={styles.cardPro}><div className={styles.cardIcon}>💃</div>3. Получите персональный план и занимайтесь с удовольствием!</div>
         </div>
       </section>
 

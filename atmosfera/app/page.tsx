@@ -72,15 +72,6 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
-      {/* Как это работает */}
-      <section className={styles.sectionBlock}>
-        <h2 className={styles.sectionTitlePro}>Как это работает?</h2>
-        <div className={styles.cardGrid}>
-          <div className={styles.cardPro}><div className={styles.cardIcon}>📝</div>1. Зарегистрируйтесь на сайте</div>
-          <div className={styles.cardPro}><div className={styles.cardIcon}>🤖</div>2. Пройдите AI-анкету</div>
-          <div className={styles.cardPro}><div className={styles.cardIcon}>💃</div>3. Получите персональный план и занимайтесь с удовольствием!</div>
-        </div>
-      </section>
       {/* Banner Slider */}
       <section className={styles.bannerSlider} style={{marginTop: 40, display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', position: 'relative'}}>
         <button
@@ -114,18 +105,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Почему выбирают нас */}
-      <section className={styles.sectionBlock}>
-        <h2 className={styles.sectionTitlePro}>Почему выбирают нас?</h2>
-        <div className={styles.cardGrid}>
-          <div className={styles.cardPro}><div className={styles.cardIcon}>👩‍🎤</div>Только для девушек — уют и поддержка</div>
-          <div className={styles.cardPro}><div className={styles.cardIcon}>🤖</div>AI-подбор программ под ваши цели</div>
-          <div className={styles.cardPro}><div className={styles.cardIcon}>💪</div>Профессиональные тренеры</div>
-          <div className={styles.cardPro}><div className={styles.cardIcon}>🕒</div>Удобное расписание и гибкие абонементы</div>
-        </div>
-      </section>
-
-      {/* Направления */}
+      {/* Наши направления */}
       <section className={styles.sectionBlock}>
         <h2 className={styles.sectionTitlePro}>Наши направления</h2>
         <div className={styles.directionsGrid}>
@@ -138,7 +118,28 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FAQ */}
+      {/* Почему выбирают нас */}
+      <section className={styles.sectionBlock}>
+        <h2 className={styles.sectionTitlePro}>Почему выбирают нас?</h2>
+        <div className={styles.cardGrid}>
+          <div className={styles.cardPro}><div className={styles.cardIcon}>👩‍🎤</div>Только для девушек — уют и поддержка</div>
+          <div className={styles.cardPro}><div className={styles.cardIcon}>🤖</div>AI-подбор программ под ваши цели</div>
+          <div className={styles.cardPro}><div className={styles.cardIcon}>💪</div>Профессиональные тренеры</div>
+          <div className={styles.cardPro}><div className={styles.cardIcon}>🕒</div>Удобное расписание и гибкие абонементы</div>
+        </div>
+      </section>
+
+      {/* Как это работает */}
+      <section className={styles.sectionBlock}>
+        <h2 className={styles.sectionTitlePro}>Как это работает?</h2>
+        <div className={styles.cardGrid}>
+          <div className={styles.cardPro}><div className={styles.cardIcon}>📝</div>1. Зарегистрируйтесь на сайте</div>
+          <div className={styles.cardPro}><div className={styles.cardIcon}>🤖</div>2. Пройдите AI-анкету</div>
+          <div className={styles.cardPro}><div className={styles.cardIcon}>💃</div>3. Получите персональный план и занимайтесь с удовольствием!</div>
+        </div>
+      </section>
+
+      {/* Частые вопросы */}
       <section className={styles.sectionBlock}>
         <h2 className={styles.sectionTitlePro}>Частые вопросы</h2>
         <div className={styles.faqList}>

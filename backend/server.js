@@ -175,6 +175,14 @@ app.delete('/api/admin/user/:id/delete', authenticate, async (req, res) => {
   if (!req.user.is_admin) return res.status(403).json({ error: 'Нет доступа' });
   const user_id = req.params.id;
   try {
+    // Проверяем, является ли удаляемый пользователь админом
+    const userRes = await pool.query('SELECT is_admin FROM users WHERE id = $1', [user_id]);
+    if (userRes.rows.length === 0) {
+      return res.status(404).json({ error: 'Пользователь не найден' });
+    }
+    if (userRes.rows[0].is_admin) {
+      return res.status(403).json({ error: 'Нельзя удалить администратора' });
+    }
     await pool.query('DELETE FROM ai_complexes WHERE user_id = $1', [user_id]);
     await pool.query('DELETE FROM users WHERE id = $1', [user_id]);
     res.json({ success: true });

@@ -292,9 +292,8 @@
   align-items: flex-start;
   text-align: left;
   border: none;
-  border-left: none;
+  border-left: 4px solid var(--orange);
   border-right: 4px solid var(--orange);
-  border-bottom: 4px solid var(--orange);
   transition: box-shadow 0.2s, transform 0.18s, border 0.2s;
   color: #222;
 }
@@ -1337,34 +1336,24 @@ ul.aboutList {
 
 .cardGrid {
   display: flex;
-  justify-content: center;
-  align-items: stretch;
-  gap: 32px;
   flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
 }
 .cardPro {
-  flex: 1 1 260px;
-  min-width: 220px;
-  max-width: 320px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 180px;
-  box-sizing: border-box;
   background: #fff;
   border-radius: 18px;
   box-shadow: 0 4px 24px rgba(255,214,0,0.10), 0 1.5px 8px rgba(0,0,0,0.07);
   border: 2.5px solid var(--orange);
+  min-width: 220px;
+  max-width: 270px;
+  padding: 32px 18px 24px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
   transition: box-shadow 0.22s, border 0.22s, transform 0.18s;
   position: relative;
-  min-height: 220px;
-}
-.cardPro:hover {
-  box-shadow: 0 8px 32px var(--orange)33, 0 2px 12px var(--orange)22;
-  border-color: var(--orange);
-  transform: translateY(-4px) scale(1.04);
 }
 .cardIcon {
   width: 54px;

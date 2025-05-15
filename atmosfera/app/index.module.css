@@ -292,13 +292,15 @@
   align-items: flex-start;
   text-align: left;
   border: none;
-  border-left: 4px solid var(--orange);
+  border-left: none;
+  border-right: 4px solid var(--orange);
+  border-bottom: 4px solid var(--orange);
   transition: box-shadow 0.2s, transform 0.18s, border 0.2s;
   color: #222;
 }
 .directionCard:hover {
   box-shadow: 0 6px 24px var(--orange-shadow);
-  border-left: 4px solid var(--orange);
+  border-color: var(--orange);
   transform: translateY(-2px) scale(1.03);
 }
 .directionCard > div:first-child {
@@ -385,9 +387,21 @@
   margin-bottom: 6px;
 }
 .faqList {
-  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+  align-items: stretch;
 }
 .faqItem {
+  flex: 1 1 260px;
+  min-width: 220px;
+  max-width: 320px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
   background: #fff;
   border-radius: 16px;
   box-shadow: 0 1.5px 8px rgba(0,0,0,0.07);
@@ -428,7 +442,7 @@
   display: flex;
   flex-direction: row;
   align-items: stretch;
-  gap: 80px;
+  gap: 8em;
   justify-content: center;
   background: #fff;
   border-radius: 24px;
@@ -1323,29 +1337,26 @@ ul.aboutList {
 
 .cardGrid {
   display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
   justify-content: center;
   align-items: stretch;
-  margin-top: 16px;
-  max-width: 900px;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+  gap: 32px;
+  flex-wrap: wrap;
 }
 .cardPro {
-  background: #fff;
-  border-radius: 18px;
-  box-shadow: 0 4px 24px rgba(255,214,0,0.10), 0 1.5px 8px rgba(0,0,0,0.07);
-  border: 2.5px solid var(--orange);
+  flex: 1 1 260px;
   min-width: 220px;
-  max-width: 270px;
-  padding: 32px 18px 24px 18px;
+  max-width: 320px;
+  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
+  height: 180px;
+  box-sizing: border-box;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(255,214,0,0.10), 0 1.5px 8px rgba(0,0,0,0.07);
+  border: 2.5px solid var(--orange);
   transition: box-shadow 0.22s, border 0.22s, transform 0.18s;
   position: relative;
   min-height: 220px;

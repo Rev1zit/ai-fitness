@@ -86,6 +86,12 @@ export default function Header() {
     const name = (form.elements.namedItem('name') as HTMLInputElement).value;
     const email = (form.elements.namedItem('email') as HTMLInputElement).value;
     const password = (form.elements.namedItem('password') as HTMLInputElement).value;
+    // Простая проверка сложности пароля
+    if (password.length < 6 || !/[A-Za-z]/.test(password) || !/\d/.test(password)) {
+      setError('Пароль должен быть не менее 6 символов и содержать буквы и цифры');
+      setLoading(false);
+      return;
+    }
     try {
       const res = await fetch(process.env.NEXT_PUBLIC_API_URL + '/api/auth/register', {
         method: 'POST',

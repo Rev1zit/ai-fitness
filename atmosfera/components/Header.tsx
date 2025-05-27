@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
 import styles from "./header.module.css";
 import { useEffect, useState } from "react";
@@ -117,7 +116,7 @@ export default function Header() {
       <div className={styles.headerInner}>
         <div className={styles.logoBlock}>
           <Link href="/">
-            <Image
+            <img
               src="/images/log.jpg"
               alt="Логотип"
               width={54}

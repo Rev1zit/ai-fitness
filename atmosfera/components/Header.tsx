@@ -118,7 +118,7 @@ export default function Header() {
         <div className={styles.logoBlock}>
           <Link href="/">
             <Image
-              src="images/log.jpg"
+              src="/images/log.jpg"
               alt="Логотип"
               width={54}
               height={54}
